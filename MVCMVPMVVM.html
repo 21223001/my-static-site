@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Presentation Architecture Patterns</title>
+</head>
+<body>
+
+  <h1>Presentation Architecture Patterns</h1>
+
+  <section>
+    <h1>これは何のためのもの？</h1>
+    <p>
+      <strong>MVC、MVP、MVVM</strong> などは
+      <strong>「アーキテクチャパターン（設計パターン）」</strong>と呼ばれ、
+      ソフトウェア開発における“指針”や“設計思想”を表します。
+    </p>
+    <p>
+      これらのパターンは、既に完成したものを分類するためのラベルではありません。
+      <strong>これから設計・実装を行う際の「道しるべ」</strong>として活用されるべきものです。
+    </p>
+    <p>
+      例えるなら、家を建てるときに「間取りの設計（MVCなど）」を考えるのが正しいアプローチです。
+      すでに建った家を見て「これはリビング、これは寝室だったんだな」と分類しても、
+      住みやすさが改善されるわけではありません。
+    </p>
+  </section>
+  
+  <section>
+    <h2>各パターンの例えと整理</h2>
+  
+    <section>
+      <h3>MVC（Model-View-Controller）</h3>
+      <ul>
+        <li><strong>Model（M）：</strong> ゲームのカセット（ゲームの内容・ロジック）</li>
+        <li><strong>View（V）：</strong> テレビ画面（ゲームの見た目）</li>
+        <li><strong>Controller（C）：</strong> コントローラー（操作を受け取ってゲームに指示を出す）</li>
+      </ul>
+      <p>
+        解釈：コントローラー（C）は交換可能だが、カセット（M）と画面（V）は密接に連動している。
+        <strong>MとVの結びつきが強く、Cはそれらの橋渡し役</strong>にすぎない。
+      </p>
+    </section>
+  
+    <section>
+      <h3>MVP（Model-View-Presenter）</h3>
+      <ul>
+        <li><strong>Model（M）：</strong> ゲームのカセット（ロジックやデータ）</li>
+        <li><strong>View（V）：</strong> テレビ画面（見た目の部分。自分では何もしない）</li>
+        <li><strong>Presenter（P）：</strong> ゲームをプレイしている人（プレイヤー）</li>
+      </ul>
+      <p>
+        解釈：プレイヤー（P）がロジック（M）と表示（V）の両方を制御する。
+        画面（V）は指示された内容を表示するだけの<strong>受け身</strong>。
+        <strong>Pが主導権を持ってMとVを操作</strong>する構造。
+      </p>
+    </section>
+  
+    <section>
+      <h3>MVVM（Model-View-ViewModel）</h3>
+      <ul>
+        <li><strong>Model（M）：</strong> ゲームのカセット（データやルール）</li>
+        <li><strong>View（V）：</strong> テレビ画面（表示部分）</li>
+        <li><strong>ViewModel（VM）：</strong> 自動プレイヤーAI（コントローラーを使わず、勝手にプレイして画面に反映）</li>
+      </ul>
+      <p>
+        解釈：ViewModelはModelの状態を監視し、必要に応じてViewを自動で更新する。
+        ユーザーの操作がなくても、<strong>リアクティブにViewが変化</strong>する。
+        <strong>ViewとViewModelの双方向バインディング</strong>が特徴。
+      </p>
+    </section>
+  </section>
+  
+  <!-- トップページに戻るリンク -->
+  <p><a href="index.html">トップページに戻る</a></p>
+
+</body>
+</html>
+
