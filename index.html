@@ -5,46 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Static Site</title>
     <link rel="stylesheet" href="https://unpkg.com/picnic" />
+    <link rel="stylesheet" href="css_standard.css" />
+
   </head>
 
   <body>
-    <h1>こんにちは、GitHub Pages！</h1>
-      <p>これはプライベートリポジトリから公開された静的ページです。</p>
+    <h1>こんにちは, GitHub Pages!</h1>
+      <p>これはプライベートリポジトリから公開された静的ページです．</p>
 
-    <h2>ステージ1：前提知識の習得</h2>
-      <ul>
-        <li><a href="content.html">サンプルリンク</a></li>
-      </ul>
+    <h2>ステージ1:前提知識の習得</h2>
+      <h3>HTML</h3>
 
       <ul>
-        <li><a href="basichtml.html">HTMLの基礎</a></li>
-      </ul>
-
-      以下今後追加
-      ・JavaScriptの基本
-
-    <h2>ステージ2：Vue3基本の理解</h2>
-      <ul>
-        <li><a href="content.html">サンプルリンク</a></li>
-      </ul>
-
-      <ul>
-        <li><a href="MVCMVPMVVM.html">MVC,MVP,MVVM Presentation Architecture Patterns</a></li>
+        <li><a href="content/basichtml.html">HTMLの基礎</a></li>
       </ul>
 
 
+      <h3>Javascript</h3>
 
-    <h2>ステージ3：Vue3での実践的な機能</h2>
+        <ul>
+          <li><a href="content/JS_import_export.html">importとexport</a></li>
+          <li><a href="content/content.html">サンプルリンク</a></li>
+        </ul>
+        変数定義 (let, const),constの再代入に関して<br>
+        function, allow function<br>
+        配列・オブジェクト操作(map, filter, reduce)<br>
+        Promise,非同期処理(async/await)<br>
+        モジュール(import/export)<br>
+
+
+
+    <h2>ステージ2:Vue3基本の理解</h2>
       <ul>
-        <li><a href="content.html">サンプルリンク</a></li>
+        <li><a href="content/content.html">サンプルリンク</a></li>
       </ul>
 
-    <h2>ステージ4：実務レベルの応用</h2>
+
+      <h3>Vue.jsとは何か</h3>
+
       <ul>
-        <li><a href="content.html">サンプルリンク</a></li>
+        <li><a href="content/MVCMVPMVVM.html">MVC,MVP,MVVM Presentation Architecture Patterns</a></li>
+      </ul>
+
+        SPAとは何か(Single Page Application)<br>
+
+      <h3>Vue3インストールと環境構築</h3>
+        npm, Node.jsのインストール<br>
+        vue create プロジェクト名 コマンド<br>
+        Viteを使ったプロジェクト立ち上げも推奨<br>
+
+      <h3>Composition API基本</h3>
+        <ul>
+          setup()関数<br>
+          ref, reactiveの使い方<br>
+          computed, watchの使い方<br>
+          <li><a href="content/V_lifecyclehook.html">Mライフサイクルフック(onMounted, onUpdated, onUnmounted)</a></li>
+        </ul>
+
+
+      <h3>テンプレート構文</h3>
+        ディレクティブ(v-for, v-if, v-bind, v-on)<br>
+        イベントハンドリング<br>
+        フォーム入力バインディング(v-model)<br>
+
+
+
+    <h2>ステージ3:Vue3での実践的な機能</h2>
+      <ul>
+        <li><a href="content/content.html">サンプルリンク</a></li>
+      </ul>
+
+    <h2>ステージ4:実務レベルの応用</h2>
+      <ul>
+        <li><a href="content/content.html">サンプルリンク</a></li>
       </ul>
 
 
-    <script src="script.js"></script>
+    <script src="content/script.js"></script>
   </body>
 </html>

@@ -1,0 +1,60 @@
+<section>
+  <h2>Vue 3 Composition API におけるライフサイクル</h2>
+
+  <h3>1. ライフサイクルとは</h3>
+  <p>
+    Vueコンポーネントが「生成→表示→更新→破棄」する一連の流れの中で、特定のタイミングで処理を実行できる仕組みです。
+    Composition APIでは以下のような関数で扱います：
+  </p>
+  <pre><code>onMounted(() =&gt; { ... })      // マウント直後
+onBeforeUnmount(() =&gt; { ... }) // 破棄前</code></pre>
+
+  <h3>2. 主なフック関数</h3>
+  <table border="1">
+    <thead>
+      <tr><th>タイミング</th><th>フック名</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>マウント前</td><td><code>onBeforeMount</code></td></tr>
+      <tr><td>マウント直後</td><td><code>onMounted</code></td></tr>
+      <tr><td>更新前</td><td><code>onBeforeUpdate</code></td></tr>
+      <tr><td>更新後</td><td><code>onUpdated</code></td></tr>
+      <tr><td>破棄前</td><td><code>onBeforeUnmount</code></td></tr>
+      <tr><td>破棄後</td><td><code>onUnmounted</code></td></tr>
+    </tbody>
+  </table>
+
+  <h3>3. ライフサイクルが必要な理由</h3>
+  <ul>
+    <li><strong>DOM操作や外部ライブラリ初期化</strong>は表示後（<code>onMounted</code>）でないと正しく行えない</li>
+    <li><strong>イベントリスナ・タイマーの解除</strong>は破棄時（<code>onUnmounted</code>）に必要</li>
+    <li>コンポーネント単位で管理できるため、<strong>再利用性と保守性</strong>が向上</li>
+  </ul>
+
+  <h3>4. コンポーネントとの関係</h3>
+  <p>
+    VueはUIを<strong>小さなコンポーネント単位</strong>で構築します。<br>
+    各コンポーネントが独立してライフサイクルを持つことで、必要なタイミングで適切な処理を行うことができます。
+  </p>
+
+  <h3>5. ページサイクルとの違い</h3>
+  <table border="1">
+    <thead>
+      <tr><th>比較項目</th><th>ライフサイクル</th><th>ページサイクル</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>対象</td><td>Vueの<strong>各コンポーネント</strong></td><td>ブラウザ全体のページ（<code>DOMContentLoaded</code>など）</td></tr>
+      <tr><td>実行範囲</td><td>特定のVueコンポーネント内のみ</td><td>ページ全体に一度だけ</td></tr>
+      <tr><td>主な目的</td><td>UI制御・状態管理</td><td>ページ初期化やアンロード処理など</td></tr>
+    </tbody>
+  </table>
+
+  <h3>まとめ</h3>
+  <p>
+    Vueのライフサイクルは、<strong>コンポーネントの状態管理とタイミング制御</strong>に不可欠であり、ページ全体ではなく“部品”単位で完結する仕組みです。
+  </p>
+
+    <!-- トップページに戻るリンク -->
+  <p><a href="../index.html">トップページに戻る</a></p>
+
+</section>

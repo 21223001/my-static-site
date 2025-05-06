@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript モジュール : importとexport</title>
+</head>
+<body>
+  <h1>JavaScriptのmoduleにおける import と export</h1>
+
+  <h2> 概要</h2>
+  <ul>
+    <li><strong>export : </strong>モジュールから関数・変数・クラスなどを外部に公開する</li>
+    <li><strong>import : </strong>他のモジュールから公開された要素を取り込む</li>
+  </ul>
+
+  <h2> 用途</h2>
+  <ul>
+    <li>コードの分割と整理</li>
+    <li>再利用性の向上</li>
+    <li>依存関係の明示</li>
+  </ul>
+
+  <h2> サンプル</h2>
+
+  <h3>1. ファイル構成</h3>
+  <pre><code>project/
+├─ math.js
+└─ main.js
+  </code></pre>
+
+  <h3>2. math.js : exportの使い方</h3>
+  <pre><code>// 名前付きエクスポート(複数可)
+export function add(x, y) {
+  return x + y;
+}
+
+export const PI = 3.14;
+
+// デフォルトエクスポート(1つだけ)
+export default function multiply(x, y) {
+  return x * y;
+}
+  </code></pre>
+
+  <h3>3. main.js : importの使い方</h3>
+  <pre><code>// 名前付きimport(名前一致が必要)
+import { add, PI } from './math.js';
+
+// デフォルトimport(名前は自由に設定可)
+import multiply from './math.js';
+
+console.log(add(2, 3));      // 5
+console.log(PI);             // 3.14
+console.log(multiply(4, 5)); // 20
+  </code></pre>
+
+  <h2> ポイント</h2>
+  <table border="1" cellpadding="5">
+    <thead>
+      <tr>
+        <th>種類</th>
+        <th>特徴</th>
+        <th>書き方</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>名前付きエクスポート</td>
+        <td>複数可・<code>{}</code>で指定してimport</td>
+        <td><code>export { name }</code> / <code>import { name }</code></td>
+      </tr>
+      <tr>
+        <td>デフォルトエクスポート</td>
+        <td>1つだけ・名前は自由</td>
+        <td><code>export default ...</code> / <code>import 任意名</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Vue.jsなどのフレームワークでも頻繁に使われます．</p>
+
+    <!-- トップページに戻るリンク -->
+    <p><a href="../index.html">トップページに戻る</a></p>
+</body>
+</html>
