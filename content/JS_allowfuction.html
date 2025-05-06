@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript アロー関数まとめ</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2em;
+      line-height: 1.6;
+    }
+    code, pre {
+      background-color: #111;
+      color: #0f0;
+      padding: 0.5em;
+      display: block;
+      margin: 1em 0;
+      white-space: pre-wrap;
+    }
+    h2 {
+      border-bottom: 2px solid #ccc;
+      margin-top: 2em;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript アロー関数(Arrow Function)まとめ</h1>
+
+  <h2>基本構文</h2>
+  <pre><code>const 関数名 = (引数) =&gt; {
+  処理内容
+}</code></pre>
+
+  <h2>省略ルール</h2>
+  <ul>
+    <li><strong>引数が1つ</strong>:括弧 <code>()</code> を省略可能</li>
+    <li><strong>引数が0または2つ以上</strong>:括弧 <code>()</code> 必須</li>
+    <li><strong>中括弧 <code>{}</code> を省略した場合</strong>:暗黙の return が適用される</li>
+    <li><strong>中括弧あり</strong>:return を明示する必要あり</li>
+  </ul>
+
+  <h2>例:省略可能なパターン</h2>
+
+  <h3>引数1つ・中括弧省略(return省略)</h3>
+  <pre><code>const square = x =&gt; x * x;</code></pre>
+
+  <h3>引数なし・括弧必要</h3>
+  <pre><code>const greet = () =&gt; "Hello!";</code></pre>
+
+  <h3>引数2つ・括弧必要</h3>
+  <pre><code>const add = (a, b) =&gt; a + b;</code></pre>
+
+  <h3>複数行処理・return必要</h3>
+  <pre><code>const greet = name =&gt; {
+  const msg = `こんにちは，${name}`;
+  return msg;
+};</code></pre>
+
+  <h2>Vue 3 Composition API での使用例</h2>
+
+  <h3>例1:setup内で定義する関数</h3>
+  <pre><code>import { ref } from 'vue';
+
+export default {
+  setup() {
+    const count = ref(0);
+
+    const increment = () =&gt; count.value++;
+
+    return { count, increment };
+  }
+};</code></pre>
+
+  <h3>例2:イベントハンドラとして使用</h3>
+  <pre><code>&lt;template&gt;
+  &lt;button @click="increment"&gt;増やす&lt;/button&gt;
+  &lt;p&gt;{{ count }}&lt;/p&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue';
+
+const count = ref(0);
+const increment = () =&gt; count.value++;
+&lt;/script&gt;</code></pre>
+
+  <h3>例3:引数あり，暗黙のreturn</h3>
+  <pre><code>const double = x =&gt; x * 2;</code></pre>
+
+  <h3>例4:外部のthisを継承(Composition APIではthisは使わない)</h3>
+  <pre><code>const items = [1, 2, 3];
+items.forEach(item =&gt; console.log(item));</code></pre>
+
+
+    <!-- トップページに戻るリンク -->
+    <p><a href="../index.html">トップページに戻る</a></p>
+
+</body>
+</html>

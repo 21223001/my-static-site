@@ -1,0 +1,67 @@
+<section>
+    <h2>Vue 3 における <code>ref(0)</code> の解説</h2>
+
+    <h3> 概要</h3>
+    <p>
+      <code>ref(0)</code> は，Vue 3 の Composition API において，
+      <strong>リアクティブに追跡可能な数値変数</strong>を作成するために使用されます．
+    </p>
+
+    <h3> 実態</h3>
+    <ul>
+      <li><code>ref(0)</code> の戻り値は Vue 独自の <code>Ref</code> 型オブジェクトです．</li>
+      <li>内部的には <code>{ value: 0 }</code> という構造を持つオブジェクトです．</li>
+      <li>数値には <code>.value</code> を使ってアクセス・更新します．</li>
+    </ul>
+
+    <pre><code>const count = ref(0);
+  console.log(typeof count); // "object"
+  console.log(count.value);  // 0
+  count.value += 1;          // 値を変更(Vueが検知)</code></pre>
+
+    <h3> なぜ必要か</h3>
+    <p>
+      JavaScript のプリミティブ値(例: 数値，文字列)は，単独では Vue による変更の検知ができません．
+      そのため，Vue は <code>ref()</code> により，プリミティブをオブジェクトとしてラップし，追跡可能にしています．
+    </p>
+
+    <h3> 特徴</h3>
+    <table border="1" cellpadding="5">
+      <thead>
+        <tr><th>特性</th><th>内容</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>値の追跡</td><td><code>.value</code> の変更を Vue が検知し，再描画に反映</td></tr>
+        <tr><td>オブジェクト型</td><td><code>typeof ref(0)</code> は <code>"object"</code></td></tr>
+        <tr><td>テンプレート互換</td><td>テンプレート内では <code>.value</code> を省略して表示可能</td></tr>
+        <tr><td>Composition API 専用</td><td><code>setup()</code> 関数内で利用</td></tr>
+      </tbody>
+    </table>
+
+    <h3> 使用例</h3>
+    <pre><code>&lt;template&gt;
+    &lt;button @click="increment"&gt;Count is {{ count }}&lt;/button&gt;
+  &lt;/template&gt;
+
+  &lt;script setup&gt;
+  import { ref } from 'vue';
+
+  const count = ref(0);
+
+  function increment() {
+    count.value += 1;
+  }
+  &lt;/script&gt;
+  </code></pre>
+
+    <h3> 結論</h3>
+    <p>
+      <code>ref(0)</code> は「<strong>数値0を持つが，Vueが追跡可能なオブジェクト</strong>」です．<br>
+      通常の変数とは異なり，<code>.value</code> を通して操作することでリアクティブ性を維持します．<br>
+      Vue の再描画・バインディングの仕組みで重要な役割を果たします．
+    </p>
+
+    <!-- トップページに戻るリンク -->
+    <p><a href="../index.html">トップページに戻る</a></p>
+
+  </section>
